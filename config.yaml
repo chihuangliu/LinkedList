@@ -1,0 +1,48 @@
+linkedin:
+  cookies_path: ./www.linkedin.com_cookies.txt
+  request_delay_seconds: 1.0
+
+labels:
+  category:
+    description: "Company size and prestige tier"
+    values:
+      big_tech:
+        description: "FAANG-level or major tech company (Google, Meta, Apple, Microsoft, Amazon, Netflix, OpenAI, Anthropic, DeepMind, NVIDIA, Stripe, Salesforce, Adobe, Uber, Airbnb)"
+      mid_size:
+        description: "Established company, typically 1,000–50,000 employees"
+      startup:
+        description: "Early-stage or small company, typically <1,000 employees or founded <10 years ago"
+
+  visa:
+    description: "UK/international visa sponsorship availability based on JD text"
+    values:
+      available:
+        description: "JD explicitly mentions visa sponsorship, right-to-work support, or relocation assistance"
+      not_available:
+        description: "JD explicitly states no sponsorship or requires existing right to work"
+      maybe:
+        description: "Not mentioned or ambiguous — common for large companies that typically sponsor"
+
+  type:
+    description: "Role type inferred from JD content, not job title"
+    values:
+      mle:
+        description: "Traditional ML engineering: training pipelines, MLOps, model serving, feature stores, infra"
+      agentic_ai:
+        description: "LLM/agentic systems: LLM APIs, RAG, agent frameworks, tool use, prompt engineering, AI products"
+      ml_scientist:
+        description: "Research-heavy: novel methods, publications, theoretical work, less deployment emphasis"
+      ai_ml_mixed:
+        description: "Clear blend of two or more of the above types"
+      data_scientist:
+        description: "Analytics + ML blend: A/B testing, dashboards, SQL, business metrics"
+
+  leetcode:
+    description: "Estimated interview algorithm difficulty based on company culture"
+    values:
+      hard:
+        description: ">250 LeetCode problems recommended (e.g. Jane Street, Two Sigma, Google, Meta, Citadel)"
+      medium:
+        description: ">150 problems recommended (e.g. established tech companies, well-known startups)"
+      low:
+        description: "Standard software interviews, <150 problems (e.g. early-stage startups, research labs)"
