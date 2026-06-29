@@ -61,9 +61,18 @@ def upsert_jobs(
         ).fetchone()
         if existing:
             conn.execute(
-                """UPDATE jobs SET title=?, company=?, company_id=?, location=?,
-                   jd_text=?, url=?, company_type=?, staff_count=?, founded_year=?,
-                   company_url=?, synced_at=?, status='active' WHERE job_id=?""",
+                """UPDATE jobs SET
+                   title=?,
+                   company=COALESCE(NULLIF(?, ''), company),
+                   company_id=COALESCE(NULLIF(?, ''), company_id),
+                   location=?,
+                   jd_text=?,
+                   url=?,
+                   company_type=COALESCE(NULLIF(?, ''), company_type),
+                   staff_count=COALESCE(?, staff_count),
+                   founded_year=COALESCE(?, founded_year),
+                   company_url=COALESCE(NULLIF(?, ''), company_url),
+                   synced_at=?, status='active' WHERE job_id=?""",
                 (
                     job["title"], job["company"], job["company_id"], job["location"],
                     job["jd_text"], job["url"], job["company_type"], job["staff_count"],
